@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/beakerbrowser/dat-session-data-ext-msg.git"
+    "url": "git+https://github.com/dbrowser/dat-session-data-ext-msg.git"
   },
   "keywords": [
     "dat",
@@ -19,9 +19,9 @@
   "author": "Paul Frazee <pfrazee@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/beakerbrowser/dat-session-data-ext-msg/issues"
+    "url": "https://github.com/dbrowser/dat-session-data-ext-msg/issues"
   },
-  "homepage": "https://github.com/beakerbrowser/dat-session-data-ext-msg#readme",
+  "homepage": "https://github.com/dbrowser/dat-session-data-ext-msg#readme",
   "devDependencies": {
     "dwebfs": "^1.1.0",
     "random-access-memory": "^3.0.0",

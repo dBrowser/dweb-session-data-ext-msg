@@ -3,7 +3,7 @@
 Methods for implementing [DEP-0006: Session Data (Extension Message)](https://www.datprotocol.com/deps/0006-session-data-extension/).
 
 ```js
-const {DatSessionDataExtMsg} = require('@beaker/dat-session-data-ext-msg')
+const {DatSessionDataExtMsg} = require('dweb-session-data-ext-msg')
 var datSessionDataExtMsg = new DatSessionDataExtMsg()
 
 /**
@@ -23,7 +23,7 @@ var mySwarm = discoverySwarm(swarmDefaults({
 /**
  * Step 2. Wire up each dat you create
  */
-datSessionDataExtMsg.watchDat(archiveOrHypercore) // can give a hyperdrive or hypercore
+datSessionDataExtMsg.watchDat(archiveOrHypercore) // can give a dwebfs or ddatabase
 // datSessionDataExtMsg.unwatchDat(archiveOrHypercore) when done
 
 /**

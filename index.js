@@ -118,7 +118,7 @@ class DatWatcher {
 
   broadcastLocalSessionData () {
     // send to peers
-    var peers = this.hypercore.peers
+    var peers = this.ddatabase.peers
     for (let i = 0; i < peers.length; i++) {
       if (remoteSupports(peers[i], 'session-data')) {
         getPeerFeedStream(peers[i]).extension('session-data', this.localSessionData)
@@ -134,24 +134,24 @@ class DatWatcher {
   }
 
   listen () {
-    this.hypercore.on('peer-add', this.onPeerAdd)
-    this.hypercore.on('peer-remove', this.onPeerRemove)
+    this.ddatabase.on('peer-add', this.onPeerAdd)
+    this.ddatabase.on('peer-remove', this.onPeerRemove)
   }
 
   unlisten () {
-    this.hypercore.removeListener('peer-add', this.onPeerAdd)
-    this.hypercore.removeListener('peer-remove', this.onPeerRemove)
+    this.ddatabase.removeListener('peer-add', this.onPeerAdd)
+    this.ddatabase.removeListener('peer-remove', this.onPeerRemove)
   }
 
-  get hypercore () {
-    // if dat is a hyperdrive, use the metadata hypercore
-    // otherwise assume dat is a hypercore already
+  get ddatabase () {
+    // if dat is a dwebfs, use the metadata ddatabase
+    // otherwise assume dat is a ddatabase already
     return this.dat.metadata ? this.dat.metadata : this.dat
   }
 
   getPeer (remoteId) {
     remoteId = toRemoteId(remoteId)
-    return this.hypercore.peers.find(p => isSameId(remoteId, toRemoteId(p)))
+    return this.ddatabase.peers.find(p => isSameId(remoteId, toRemoteId(p)))
   }
 
   onPeerAdd (peer) {

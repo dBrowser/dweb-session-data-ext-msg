@@ -1,5 +1,5 @@
 var tape = require('tape')
-var hyperdrive = require('hyperdrive')
+var dwebfs = require('dwebfs')
 var ram = require('random-access-memory')
 var {DatSessionDataExtMsg} = require('./')
 
@@ -8,7 +8,7 @@ tape('exchange session data', function (t) {
   var srcSessionData = new DatSessionDataExtMsg()
   var cloneSessionData = new DatSessionDataExtMsg()
 
-  var src = hyperdrive(ram)
+  var src = dwebfs(ram)
   var clone
   src.on('ready', function () {
     // generate source archive
@@ -24,7 +24,7 @@ tape('exchange session data', function (t) {
           t.same(src.version, 3, 'version correct')
 
           // generate clone instance
-          clone = hyperdrive(ram, src.key)
+          clone = dwebfs(ram, src.key)
           clone.on('ready', startReplication)
         })
       })
@@ -150,7 +150,7 @@ tape('exchange session data', function (t) {
 tape('no peers causes no issue', function (t) {
   var sessionData = new DatSessionDataExtMsg()
 
-  var src = hyperdrive(ram)
+  var src = dwebfs(ram)
   src.on('ready', function () {
     sessionData.watchDat(src)
     sessionData.setLocalSessionData(src, 'test')
@@ -162,7 +162,7 @@ tape('no peers causes no issue', function (t) {
 tape('throws if too large', function (t) {
   var sessionData = new DatSessionDataExtMsg()
 
-  var src = hyperdrive(ram)
+  var src = dwebfs(ram)
   src.on('ready', function () {
     sessionData.watchDat(src)
     try {
